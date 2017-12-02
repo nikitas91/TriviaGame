@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Sports Trivia Game</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-3">Sports Trivia!</h1>
+            <hr class="my-4">
+            <div id="game-intro" class="row">
+                <div class="col-md-12">
+                    <p>
+                        <button id="btn-start-game" class="btn btn-lg btn-success">Start!</button>
+                    </p>
+                </div>
+            </div>
+            <div id="game-timer" class="row">
+                <div class="col-md-12">
+                    <p id="timer-text"></p>
+                </div>
+            </div>
+            <div id="game-content" class="row">
+                <div class="col-md-12">
+                    <div id="trivia-content">
+                        <div class="trivia-item">
+                            <p class="trivia-question">This is the question</p>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="q1" value="a">Option A
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="q1" value="b">Option B
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="my-4">
+                    <p>
+                        <button id="btn-submit" class="btn btn-lg btn-success">Done</button>
+                    </p>
+                </div>
+            </div>
+            <div id="game-results" class="row">
+                <div class="col-md-12">
+                    <p id="results-title" class="game-results-title">Results</p>
+                    <p id="results-correct">1</p>
+                    <p id="results-incorrect">2</p>
+                    <p id="results-unanswered">3</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>

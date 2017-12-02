@@ -1,0 +1,22 @@
+body{
+    padding-top: 25px;
+    background-image: url("../images/Sports.png");
+}
+
+.jumbotron{
+    text-align: center;
+    background-color: #D2ECF1;
+}
+
+.countdown{
+    margin-bottom: 1.5rem;
+}
+
+.trivia-question{
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.trivia-item{
+    margin-bottom: 35px;
+}
