@@ -1,4 +1,7 @@
 var triviaGame = {
+    intervalId: undefined,
+    timerRunning: false,
+    timerInSeconds: 120,
     correctAnswers: 0,
     incorrectAnswers: 0,
     unanswered: 0,
@@ -125,6 +128,9 @@ var triviaGame = {
         }
     ],
     initializeGame: function(){
+        this.intervalId = undefined;
+        this.timerRunning = false;
+        this.timerInSeconds = 120;
         this.correctAnswers = 0;
         this.incorrectAnswers = 0;
         this.unanswered = 0;
@@ -200,6 +206,40 @@ var triviaGame = {
         $("#results-incorrect").text("Incorrect Answers: " + this.incorrectAnswers);
         $("#results-unanswered").text("Unanswered: " + this.unanswered);
         $("#game-results").show();
+    },
+    updateTimer: function(){
+        triviaGame.timerInSeconds--;
+        if(triviaGame.timerInSeconds === 0){
+            clearInterval(this.intervalId);
+            this.timerRunning = false;
+            var checkedItems = $("input:radio[class=form-check-input]:checked");
+            triviaGame.processUserAnswers(checkedItems);
+        }
+        else if(triviaGame.timerInSeconds < 10){
+            $("#timer").addClass("red");
+        }
+        else{
+            var timeLeft = triviaGame.timeConverter(triviaGame.timerInSeconds);
+            $("#timer").text("Time Remaining: " + timeLeft);
+        }
+    },
+    timeConverter: function(t){
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        if (minutes === 0) {
+          minutes = "00";
+        }
+
+        else if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+
+        return minutes + "m " + seconds + "s";
     }
 };
 
@@ -207,13 +247,19 @@ triviaGame.initializeGame();
 
 $("#btn-start-game").on("click", function(){
     $("#game-intro").hide();
+    $("#timer").text("Time Remaining: " + triviaGame.timeConverter(triviaGame.timerInSeconds));
     $("#game-timer").show();
     $("#game-content").show();
+
+    triviaGame.intervalId = setInterval(triviaGame.updateTimer, 1000);
+    triviaGame.timerRunning = true;
 
     triviaGame.renderTriviaQuestions();
 });
 
 $("#btn-submit").on("click", function(){
+    clearInterval(triviaGame.intervalId);
+    triviaGame.timerRunning = false;
     var checkedItems = $("input:radio[class=form-check-input]:checked");
     triviaGame.processUserAnswers(checkedItems);
 });
