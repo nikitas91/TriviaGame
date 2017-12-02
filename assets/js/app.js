@@ -215,10 +215,10 @@ var triviaGame = {
             var checkedItems = $("input:radio[class=form-check-input]:checked");
             triviaGame.processUserAnswers(checkedItems);
         }
-        else if(triviaGame.timerInSeconds < 10){
-            $("#timer").addClass("red");
-        }
         else{
+            if(triviaGame.timerInSeconds === 10){
+                $("#timer").addClass("red");
+            }
             var timeLeft = triviaGame.timeConverter(triviaGame.timerInSeconds);
             $("#timer").text("Time Remaining: " + timeLeft);
         }
